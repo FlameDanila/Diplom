@@ -14,11 +14,18 @@ namespace Diplom_2022
     
     public partial class Venue
     {
-        public int Id { get; set; }
-        public Nullable<int> EventId { get; set; }
-        public Nullable<int> VenueTypeId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Venue()
+        {
+            this.Events = new HashSet<Events>();
+        }
     
-        public virtual Events Events { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> VenueTypeId { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Events> Events { get; set; }
         public virtual VenueType VenueType { get; set; }
     }
 }

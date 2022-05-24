@@ -10,11 +10,12 @@
     <Property Name="SoldTicketsCount" Type="int" />
     <Property Name="GainTicketsCount" Type="int" />
     <Property Name="Cost" Type="int" />
-    <Property Name="Date" Type="date" />
+    <Property Name="Date" Type="date" Nullable="false" />
     <Property Name="Time" Type="time" Precision="6" />
     <Property Name="Age" Type="int" />
     <Property Name="Eduacation" Type="nvarchar" MaxLength="50" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />
+    <Property Name="VenueId" Type="int" />
   </EntityType>
   <EntityType Name="EventType">
     <Key>
@@ -50,8 +51,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="EventId" Type="int" />
     <Property Name="VenueTypeId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="VenueType">
     <Key>
@@ -73,15 +74,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Venue_Events">
-    <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
-    <End Role="Venue" Type="Self.Venue" Multiplicity="*" />
+  <Association Name="FK_Events_Venue">
+    <End Role="Venue" Type="Self.Venue" Multiplicity="0..1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Events">
+      <Principal Role="Venue">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Venue">
-        <PropertyRef Name="EventId" />
+      <Dependent Role="Events">
+        <PropertyRef Name="VenueId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -139,9 +140,9 @@
       <End Role="EventType" EntitySet="EventType" />
       <End Role="Events" EntitySet="Events" />
     </AssociationSet>
-    <AssociationSet Name="FK_Venue_Events" Association="Self.FK_Venue_Events">
-      <End Role="Events" EntitySet="Events" />
+    <AssociationSet Name="FK_Events_Venue" Association="Self.FK_Events_Venue">
       <End Role="Venue" EntitySet="Venue" />
+      <End Role="Events" EntitySet="Events" />
     </AssociationSet>
     <AssociationSet Name="FK_Venue_VenueType" Association="Self.FK_Venue_VenueType">
       <End Role="VenueType" EntitySet="VenueType" />

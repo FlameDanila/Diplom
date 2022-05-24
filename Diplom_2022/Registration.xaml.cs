@@ -31,7 +31,7 @@ namespace Diplom_2022
             { MessageBox.Show("Этот логин уже занят, придумайте другой"); }
             else
             {
-                if (FirstNameBox.Text == "" || LastNameBox.Text == "" || EducationText.Text == "" || PhoneBox.Text == "" || PasswordBox.Text == "" || LoginBox.Text == "" || AgeText.Text == "")
+                if (FirstNameBox.Text == "" || LastNameBox.Text == "" || EducationBox.Text == "" || PasswordBox.Text == "" || LoginBox.Text == "" || AgeText.Text == "")
                 { MessageBox.Show("У вас остались незаполненые поля"); }
                 else
                 {
@@ -45,7 +45,8 @@ namespace Diplom_2022
                             Age = Convert.ToInt32(AgeText.Text.Replace(" ", "")),
                             Login = LoginBox.Text.Replace(" ", ""),
                             Password = PasswordBox.Text.Replace(" ", ""),
-                            Profession = ProfessionText.Text
+                            Profession = ProfessionBox.Text,
+                            Eduacation = EducationBox.Text
                         };
 
                         App.db.Users.Add(purchasers);
@@ -66,7 +67,7 @@ namespace Diplom_2022
             }
         }
 
-        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void LoginBox_TextChanged(object sender, RoutedEventArgs e)
         {
             List<Users> OwnersLoginList = App.db.Users.ToList();
 
@@ -79,7 +80,7 @@ namespace Diplom_2022
             else { Error.Visibility = Visibility.Hidden; }
         }
 
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Back_click(object sender, MouseButtonEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();

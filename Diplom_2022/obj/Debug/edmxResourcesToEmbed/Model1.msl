@@ -1,42 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище SistemaUchetaModelContainer" CdmEntityContainer="SistemaUchetaEntities1">
-    <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
-        <MappingFragment StoreEntitySet="Events">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-          <ScalarProperty Name="SoldTicketsCount" ColumnName="SoldTicketsCount" />
-          <ScalarProperty Name="GainTicketsCount" ColumnName="GainTicketsCount" />
-          <ScalarProperty Name="Cost" ColumnName="Cost" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />
-          <ScalarProperty Name="Profession" ColumnName="Profession" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="EventType">
-      <EntityTypeMapping TypeName="SistemaUchetaModel.EventType">
-        <MappingFragment StoreEntitySet="EventType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="SistemaUchetaModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="SistemaUchetaModel.Users">
         <MappingFragment StoreEntitySet="Users">
@@ -47,24 +11,6 @@
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />
           <ScalarProperty Name="Profession" ColumnName="Profession" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Venue">
-      <EntityTypeMapping TypeName="SistemaUchetaModel.Venue">
-        <MappingFragment StoreEntitySet="Venue">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="EventId" ColumnName="EventId" />
-          <ScalarProperty Name="VenueTypeId" ColumnName="VenueTypeId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="VenueType">
-      <EntityTypeMapping TypeName="SistemaUchetaModel.VenueType">
-        <MappingFragment StoreEntitySet="VenueType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,5 +38,60 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище SistemaUchetaModel.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище SistemaUchetaModel.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="VenueId" ColumnName="VenueId" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="GainTicketsCount" ColumnName="GainTicketsCount" />
+          <ScalarProperty Name="SoldTicketsCount" ColumnName="SoldTicketsCount" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventType">
+      <EntityTypeMapping TypeName="SistemaUchetaModel.EventType">
+        <MappingFragment StoreEntitySet="EventType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SistemaUchetaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venue">
+      <EntityTypeMapping TypeName="SistemaUchetaModel.Venue">
+        <MappingFragment StoreEntitySet="Venue">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VenueTypeId" ColumnName="VenueTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VenueType">
+      <EntityTypeMapping TypeName="SistemaUchetaModel.VenueType">
+        <MappingFragment StoreEntitySet="VenueType">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
