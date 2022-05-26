@@ -17,19 +17,28 @@ using System.Windows.Shapes;
 
 namespace Diplom_2022
 {
-    /// <summary>
-    /// Логика взаимодействия для Tickets.xaml
-    /// </summary>
     public partial class Tickets : Window
     {
+        public int counter = 0;
         public Tickets()
         {
             InitializeComponent();
+            Update();
+        }
 
-            Combo.ItemsSource = App.db.Users.ToList();
+        public void Update()
+        {
+            list.Children.Clear();
+            DataTable data = new DataTable();
 
-            DataTable data = Select("Select * from dbo.events");
-
+            if (counter == 0)
+            {
+                data = Select("Select * from events");
+            }
+            else 
+            {
+                data = Select($"Select * from events where date = '{datePicker.Text}'");
+            }
             List<string> name = new List<string>();
             List<string> age = new List<string>();
             List<string> cost = new List<string>();
@@ -38,6 +47,7 @@ namespace Diplom_2022
             List<string> time = new List<string>();
             List<string> ticket = new List<string>();
             List<string> venue = new List<string>();
+            List<string> id = new List<string>();
 
             for (int f = 0; f < data.Rows.Count; f++)
             {
@@ -57,9 +67,9 @@ namespace Diplom_2022
                 ticket.Add(ticketsGain[f].ToString());
                 var venues = App.db.Events.Select(n => n.VenueId).ToList();
                 venue.Add(venues[f].ToString());
+                var ids = App.db.Events.Select(n => n.Id).ToList();
+                id.Add(ids[f].ToString());
             }
-
-            List<string> tickets = new List<string>();
 
             int top = 20;
             int bottom = 2;
@@ -69,6 +79,8 @@ namespace Diplom_2022
                 StackPanel grid = new StackPanel();
                 grid.Orientation = Orientation.Horizontal;
                 grid.Height = 50;
+                grid.PreviewMouseLeftButtonDown += buy;
+                grid.Name = "s" + id[g];
 
                 TextBlock nameText = new TextBlock();
                 nameText.Height = 80;
@@ -127,6 +139,7 @@ namespace Diplom_2022
                 typeText.VerticalAlignment = VerticalAlignment.Top;
                 typeText.FontSize = 23;
                 typeText.Margin = new Thickness(top, bottom, 0, 0);
+                typeText.ToolTip = nameFromId;
 
                 TextBlock ticketsGainText = new TextBlock();
                 ticketsGainText.Height = 50;
@@ -137,7 +150,6 @@ namespace Diplom_2022
                 ticketsGainText.FontSize = 23;
                 ticketsGainText.Margin = new Thickness(top, bottom, 0, 0);
                 ticketsGainText.ToolTip = ticket[g];
-
 
                 DataTable venueNameFromId = Select($"select Name from dbo.venue where VenueTypeId = {venue[g]}");
                 string venueName = venueNameFromId.Rows[0][0].ToString();
@@ -162,6 +174,25 @@ namespace Diplom_2022
                 grid.Children.Add(venueText);
 
                 list.Children.Add(grid);
+            }
+            counter = 0;
+        }
+
+        public void buy(object sender, MouseButtonEventArgs e)
+        {
+            var f = sender as StackPanel;
+            DataTable dt = Select($"select name from events where id = '{f.Name.Replace("s","")}'");
+            if (MessageBox.Show($"Вы действительно хотите забронировать билет на {dt.Rows[0][0]}?", "Уверены?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No) { }
+            else
+            {
+                DataTable data = Select($"select gainticketscount from events where id = '{f.Name.Replace("s", "")}'");
+                if (Convert.ToInt32(data.Rows[0][0]) > 1)
+                {
+                    DataTable dataTable = Select($"update Events set GainTicketsCount = REPLACE(GainTicketsCount, GainTicketsCount,GainTicketsCount-1) where id = '{f.Name.Replace("s", "")}' " +
+                    $"update Events set SoldTicketsCount = REPLACE(SoldTicketsCount, SoldTicketsCount, SoldTicketsCount + 1) where id = '{f.Name.Replace("s", "")}'");
+                    MessageBox.Show("Место забронировано!");
+                    Update();
+                }
             }
         }
 
@@ -194,9 +225,16 @@ namespace Diplom_2022
             return data;
         }
 
-        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        private void authButton_Click(object sender, RoutedEventArgs e)
         {
+            counter++;
+            Update();
+        }
 
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            counter = 0;
+            Update();
         }
     }
 }

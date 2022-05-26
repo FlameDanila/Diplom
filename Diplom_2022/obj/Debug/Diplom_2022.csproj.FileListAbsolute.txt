@@ -29,3 +29,5 @@ C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\Tickets.g.cs
 C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\Tickets.baml
 C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\Changes.g.cs
 C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\Changes.baml
+C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\AddEvent.g.cs
+C:\Users\Danila\source\repos\Diplom_2022\Diplom_2022\obj\Debug\AddEvent.baml

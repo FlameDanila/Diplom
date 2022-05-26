@@ -7,7 +7,7 @@
         mc:Ignorable="d"
        Title="Меню" Height="720" Width="1280" MinHeight="720" MinWidth="1280" MaxHeight="720" MaxWidth="1280" Icon="Icon.png" WindowStartupLocation="CenterScreen">
     <Grid Background="Gray">
-        <Border CornerRadius="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDBE2EF" BorderBrush="#FF0F78BB" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Width="962" Height="530">
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDBE2EF" BorderBrush="#FF0F78BB" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Width="962" Height="530">
             <Grid Width="906" Height="470" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button x:Name="changesButton" Margin="59,218,0,0" Content="⚙" FontSize="100" BorderThickness="4" Foreground="Black" Background="{x:Null}" Width="223" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Click="changesButton_Click" BorderBrush="Black" FontWeight="Bold">
                     <Button.Resources>
@@ -17,7 +17,7 @@
                     </Button.Resources>
                 </Button>
                 <TextBox x:Name="PasswordBox" Margin="0,234,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Center" UndoLimit="1" MaxLength="20" Visibility="Hidden"/>
-                <Image HorizontalAlignment="Center" Height="113" Margin="0,10,0,0" VerticalAlignment="Top" Width="136" Source="Icon.png" Stretch="Fill" StretchDirection="Both" MouseLeftButtonDown="Image_MouseLeftButtonDown" Cursor="UpArrow"/>
+                <Image HorizontalAlignment="Center" Height="113" Margin="0,10,0,0" VerticalAlignment="Top" Width="118" Source="Icon.png" Stretch="Fill" StretchDirection="Both" MouseLeftButtonDown="Image_MouseLeftButtonDown" Cursor="UpArrow"/>
                 <Button x:Name="ticketsButton" Margin="0,218,0,0" Content="🎫" FontSize="100" BorderThickness="4" Foreground="Black" Background="{x:Null}" Width="222" HorizontalAlignment="Center" Height="170" VerticalAlignment="Top" Click="ticketsButton_Click" BorderBrush="Black" FontWeight="Normal" FontStyle="Normal" FontStretch="Normal">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
@@ -25,7 +25,7 @@
                         </Style>
                     </Button.Resources>
                 </Button>
-                <Button x:Name="hallsButton" Margin="609,218,0,0" Content="☺" FontSize="100" BorderThickness="4" Foreground="Black" Background="{x:Null}" Width="224" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Click="hallsButton_Click" BorderBrush="Black" FontWeight="Normal" FontStyle="Normal" FontStretch="Normal">
+                <Button x:Name="hallsButton" Margin="609,218,0,0" Content="➕" FontSize="100" BorderThickness="4" Foreground="Black" Background="{x:Null}" Width="224" HorizontalAlignment="Left" Height="170" VerticalAlignment="Top" Click="hallsButton_Click" BorderBrush="Black" FontWeight="Normal" FontStyle="Normal" FontStretch="Normal">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>

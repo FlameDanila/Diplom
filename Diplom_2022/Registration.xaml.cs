@@ -97,5 +97,12 @@ namespace Diplom_2022
             Regex regex = new Regex("[^0-9]+[W]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 }

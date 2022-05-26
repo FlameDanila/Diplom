@@ -22,6 +22,10 @@ namespace Diplom_2022
         public Menu()
         {
             InitializeComponent();
+            if (App.userId == "1")
+            {
+                hallsButton.IsEnabled = true;
+            }
         }
 
         private void changesButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +37,16 @@ namespace Diplom_2022
 
         private void hallsButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Улыбок тебе, дед Мокар!");
+            if (App.userId == "1")
+            {
+                AddEvent addEvent = new AddEvent();
+                addEvent.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("У вас недостаточно прав!");
+            }
         }
 
         private void ticketsButton_Click(object sender, RoutedEventArgs e)

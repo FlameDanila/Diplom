@@ -15,8 +15,8 @@
           <Property Name="SoldTicketsCount" Type="int" />
           <Property Name="GainTicketsCount" Type="int" />
           <Property Name="Cost" Type="int" />
-          <Property Name="Date" Type="date" Nullable="false" />
-          <Property Name="Time" Type="time" Precision="6" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
           <Property Name="Eduacation" Type="nvarchar" MaxLength="50" />
           <Property Name="Profession" Type="nvarchar" MaxLength="50" />
@@ -202,11 +202,15 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="Events" EntityType="SistemaUchetaModel.Events" />
           <EntitySet Name="EventType" EntityType="SistemaUchetaModel.EventType" />
           <EntitySet Name="sysdiagrams" EntityType="SistemaUchetaModel.sysdiagrams" />
           <EntitySet Name="Venue" EntityType="SistemaUchetaModel.Venue" />
           <EntitySet Name="VenueType" EntityType="SistemaUchetaModel.VenueType" />
+          <AssociationSet Name="FK_Venue_VenueType" Association="SistemaUchetaModel.FK_Venue_VenueType">
+            <End Role="VenueType" EntitySet="VenueType" />
+            <End Role="Venue" EntitySet="Venue" />
+          </AssociationSet>
+          <EntitySet Name="Events" EntityType="SistemaUchetaModel.Events" />
           <AssociationSet Name="FK_Events_EventType" Association="SistemaUchetaModel.FK_Events_EventType">
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Events" EntitySet="Events" />
@@ -214,10 +218,6 @@
           <AssociationSet Name="FK_Events_Venue" Association="SistemaUchetaModel.FK_Events_Venue">
             <End Role="Venue" EntitySet="Venue" />
             <End Role="Events" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Venue_VenueType" Association="SistemaUchetaModel.FK_Venue_VenueType">
-            <End Role="VenueType" EntitySet="VenueType" />
-            <End Role="Venue" EntitySet="Venue" />
           </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -231,25 +231,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Events">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TypeId" Type="Int32" />
-          <Property Name="SoldTicketsCount" Type="Int32" />
-          <Property Name="GainTicketsCount" Type="Int32" />
-          <Property Name="Cost" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Time" Type="Time" Precision="6" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="Eduacation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="VenueId" Type="Int32" />
-          <NavigationProperty Name="EventType" Relationship="SistemaUchetaModel.FK_Events_EventType" FromRole="Events" ToRole="EventType" />
-          <NavigationProperty Name="Venue" Relationship="SistemaUchetaModel.FK_Events_Venue" FromRole="Events" ToRole="Venue" />
-        </EntityType>
         <EntityType Name="EventType">
           <Key>
             <PropertyRef Name="Id" />
@@ -275,8 +256,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="VenueTypeId" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Events" Relationship="SistemaUchetaModel.FK_Events_Venue" FromRole="Venue" ToRole="Events" />
           <NavigationProperty Name="VenueType" Relationship="SistemaUchetaModel.FK_Venue_VenueType" FromRole="Venue" ToRole="VenueType" />
+          <NavigationProperty Name="Events" Relationship="SistemaUchetaModel.FK_Events_Venue" FromRole="Venue" ToRole="Events" />
         </EntityType>
         <EntityType Name="VenueType">
           <Key>
@@ -286,6 +267,37 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Venue" Relationship="SistemaUchetaModel.FK_Venue_VenueType" FromRole="VenueType" ToRole="Venue" />
+        </EntityType>
+        <Association Name="FK_Venue_VenueType">
+          <End Type="SistemaUchetaModel.VenueType" Role="VenueType" Multiplicity="0..1" />
+          <End Type="SistemaUchetaModel.Venue" Role="Venue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VenueType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Venue">
+              <PropertyRef Name="VenueTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="SoldTicketsCount" Type="Int32" />
+          <Property Name="GainTicketsCount" Type="Int32" />
+          <Property Name="Cost" Type="Int32" />
+          <Property Name="Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Eduacation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VenueId" Type="Int32" />
+          <NavigationProperty Name="EventType" Relationship="SistemaUchetaModel.FK_Events_EventType" FromRole="Events" ToRole="EventType" />
+          <NavigationProperty Name="Venue" Relationship="SistemaUchetaModel.FK_Events_Venue" FromRole="Events" ToRole="Venue" />
         </EntityType>
         <Association Name="FK_Events_EventType">
           <End Type="SistemaUchetaModel.EventType" Role="EventType" Multiplicity="0..1" />
@@ -308,18 +320,6 @@
             </Principal>
             <Dependent Role="Events">
               <PropertyRef Name="VenueId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Venue_VenueType">
-          <End Type="SistemaUchetaModel.VenueType" Role="VenueType" Multiplicity="0..1" />
-          <End Type="SistemaUchetaModel.Venue" Role="Venue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="VenueType">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Venue">
-              <PropertyRef Name="VenueTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -366,24 +366,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище SistemaUchetaModel.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище SistemaUchetaModel.sp_upgraddiagrams" />
-          <EntitySetMapping Name="Events">
-            <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
-              <MappingFragment StoreEntitySet="Events">
-                <ScalarProperty Name="VenueId" ColumnName="VenueId" />
-                <ScalarProperty Name="Profession" ColumnName="Profession" />
-                <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="GainTicketsCount" ColumnName="GainTicketsCount" />
-                <ScalarProperty Name="SoldTicketsCount" ColumnName="SoldTicketsCount" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EventType">
             <EntityTypeMapping TypeName="SistemaUchetaModel.EventType">
               <MappingFragment StoreEntitySet="EventType">
@@ -416,6 +398,24 @@
             <EntityTypeMapping TypeName="SistemaUchetaModel.VenueType">
               <MappingFragment StoreEntitySet="VenueType">
                 <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="VenueId" ColumnName="VenueId" />
+                <ScalarProperty Name="Profession" ColumnName="Profession" />
+                <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="GainTicketsCount" ColumnName="GainTicketsCount" />
+                <ScalarProperty Name="SoldTicketsCount" ColumnName="SoldTicketsCount" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -10,8 +10,8 @@
     <Property Name="SoldTicketsCount" Type="int" />
     <Property Name="GainTicketsCount" Type="int" />
     <Property Name="Cost" Type="int" />
-    <Property Name="Date" Type="date" Nullable="false" />
-    <Property Name="Time" Type="time" Precision="6" />
+    <Property Name="Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Time" Type="nvarchar" MaxLength="50" />
     <Property Name="Age" Type="int" />
     <Property Name="Eduacation" Type="nvarchar" MaxLength="50" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />

@@ -45,10 +45,10 @@ namespace Diplom_2022
                 {
                     if (PasswordBox.Text == PasswordList[i] || MyPasswordBox.Password == PasswordList[i])
                     {
+                        App.userId = UserList[i].Login;
                         Menu menu = new Menu();
                         menu.Show();
                         Close();
-                        App.userId = UserList[i].Id;
                         break;
                     }
                     else

@@ -28,8 +28,8 @@ namespace Diplom_2022
 
         public void Update()
         {
-
-            var OwnersLoginList = App.db.Users.Where(n => n.Id == App.userId).ToList();
+            int f = Convert.ToInt32(App.userId);
+            var OwnersLoginList = App.db.Users.Where(n => n.Id == f).ToList();
             foreach (var a in OwnersLoginList)
             {
                 string[] nameUser = a.Name.Split(' ');
@@ -57,7 +57,8 @@ namespace Diplom_2022
                     { MessageBox.Show("Пароли должны совпадать!"); }
                     else
                     {
-                        var stuff = App.db.Users.Where(n => n.Id == App.userId).FirstOrDefault();
+                        int f = Convert.ToInt32(App.userId);
+                        var stuff = App.db.Users.Where(n => n.Id == f).FirstOrDefault();
 
                         stuff.Name = LastNameBox.Text.Replace(" ", "") + " " + FirstNameBox.Text.Replace(" ", "");
                         stuff.Eduacation = EducationBox.Text;

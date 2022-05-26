@@ -1,0 +1,44 @@
+﻿<Window x:Class="Diplom_2022.AddEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Diplom_2022"
+        mc:Ignorable="d"
+        Title="Добавление" Height="520" Width="1064" MinHeight="520" MinWidth="1064" MaxWidth="1064" MaxHeight="520" WindowStartupLocation="CenterScreen" Icon="Icon.png">
+    <Grid Background="Gray">
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDBE2EF" BorderBrush="#FF0F78BB" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Width="908" Height="444">
+            <Grid Width="799" Height="504" VerticalAlignment="Center" Margin="60,0,0,0" HorizontalAlignment="Left">
+                <Button x:Name="addButton" Content="Добавить" Margin="306,393,0,0" FontSize="20" Foreground="Black" Background="#FFC9CFD6" MinHeight="40" MinWidth="169"  Width="170" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Click="addButton_Click" FontFamily="Sylfaen">
+                </Button>
+                <DatePicker x:Name="DateText" FontSize="23" HorizontalAlignment="Left" Margin="299,123,0,0" VerticalAlignment="Top" Width="185" Height="37" FontFamily="Sylfaen"/>
+                <TextBlock Margin="299,87,315,387" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Дата"/></TextBlock>
+                <TextBox x:Name="CostText" Margin="564,123,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="DigitsTextInput"/>
+                <TextBox x:Name="ageText" Margin="564,214,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="DigitsTextInput"/>
+                <TextBlock Margin="564,87,50,387" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Стоимость"/></TextBlock>
+                <TextBlock Margin="536,178,23,296" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Минимальный возраст"/></TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="564,257,50,192" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Предпочтения по профессии"/></TextBlock>
+                <TextBox x:Name="proffessionText" Margin="564,317,0,0" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" HorizontalAlignment="Left" MaxLength="20" TextAlignment="Center" PreviewTextInput="PreviewTextInput"/>
+                <TextBlock Margin="291,279,307,195" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Место проведения"/></TextBlock>
+                <TextBlock Margin="299,178,315,296" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Время"/></TextBlock>
+                <TextBox x:Name="timeText" Margin="299,213,0,0" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" HorizontalAlignment="Left" MaxLength="20" TextAlignment="Center"/>
+                <ComboBox x:Name="venueCombo" HorizontalAlignment="Left" Margin="299,318,0,0" VerticalAlignment="Top" Width="185" Height="36" FontSize="20" FontFamily="Sylfaen">
+                </ComboBox>
+                <TextBlock Margin="22,178,592,296" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Тип"/></TextBlock>
+                <TextBox x:Name="ticketsCount" Margin="25,317,0,0" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" HorizontalAlignment="Left" MaxLength="20" PreviewTextInput="DigitsTextInput"/>
+                <TextBlock Margin="156,279,723,195" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen" Text="Повторите пароль"/>
+                <TextBlock Margin="25,279,589,195" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Всего билетов"/></TextBlock>
+                <TextBox x:Name="nameText" Margin="22,123,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20"/>
+                <TextBlock Margin="22,87,592,387" FontSize="24" TextAlignment="Center" FontFamily="Sylfaen"><Run Language="ru-ru" Text="Название"/></TextBlock>
+                <ComboBox x:Name="typeCombo" HorizontalAlignment="Left" Margin="25,214,0,0" VerticalAlignment="Top" Width="185" Height="38" FontSize="20" FontFamily="Sylfaen"/>
+            </Grid>
+        </Border>
+        <Button x:Name="back" Margin="911,52,0,0" Content="🔙" FontSize="20" Foreground="Black" Background="#FFC9CFD6" Width="43" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Click="back_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="7"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>

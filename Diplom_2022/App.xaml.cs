@@ -14,6 +14,6 @@ namespace Diplom_2022
     public partial class App : Application
     {
         public static SistemaUchetaEntities1 db = new SistemaUchetaEntities1();
-        public static int userId = 1;
+        public static string userId = "0";
     }
 }

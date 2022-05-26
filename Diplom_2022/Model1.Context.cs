@@ -28,11 +28,11 @@ namespace Diplom_2022
         }
     
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Events> Events { get; set; }
         public virtual DbSet<EventType> EventType { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Venue> Venue { get; set; }
         public virtual DbSet<VenueType> VenueType { get; set; }
+        public virtual DbSet<Events> Events { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

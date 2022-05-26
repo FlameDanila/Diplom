@@ -5,29 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Diplom_2022"
         mc:Ignorable="d"
-        Title="Регистрация" Height="1000" Width="364" MinHeight="1000" MinWidth="364" MaxWidth="364" MaxHeight="1000" WindowStartupLocation="CenterScreen" Icon="/Icon.png">
+        Title="Регистрация" Height="1000" Width="564" MinHeight="1000" MinWidth="564" MaxWidth="564" MaxHeight="1000" WindowStartupLocation="CenterScreen" Icon="/Icon.png">
     <Grid Background="Gray">
-        <Border CornerRadius="40" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDBE2EF" BorderBrush="#FF0F78BB" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Width="324" Height="911">
-            <Grid Width="273" Height="916" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,-16,0,0">
-                <Button x:Name="save" Margin="10,846,0,0" Content="Регистрация" FontSize="20" Foreground="Black" Background="#FFC9CFD6" MinHeight="40" MinWidth="169"  Width="220" HorizontalAlignment="Left" Height="47" VerticalAlignment="Top" Click="regButton_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="7"/>
-                        </Style>
-                    </Button.Resources>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFDBE2EF" BorderBrush="#FF0F78BB" BorderThickness="1" RenderTransformOrigin="0.5,0.5" Width="492" Height="911">
+            <Grid Width="417" Height="916" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="40,-16,0,0">
+                <Button x:Name="save" Margin="0,838,0,0" Content="Регистрация" FontSize="20" Foreground="Black" Background="#FFC9CFD6" MinHeight="40" MinWidth="169"  Width="220" HorizontalAlignment="Center" Height="47" VerticalAlignment="Top" Click="regButton_Click">
                 </Button>
-                <TextBox IsEnabled="False" x:Name="LoginBox" Margin="25,111,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" TextChanged="LoginBox_TextChanged"/>
-                <TextBox x:Name="PasswordBox" Margin="25,200,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20"/>
-                <TextBlock Text="Логин" Margin="25,76,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
-                <TextBlock Margin="25,165,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" Text="Пароль" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
-                <TextBlock Margin="25,256,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" Text="Повторите пароль" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
-                <TextBox x:Name="RepeatPassBox" Margin="25,291,0,0" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" HorizontalAlignment="Left" MaxLength="20" TextAlignment="Center"/>
-                <TextBox x:Name="LastNameBox" Margin="25,661,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
-                <TextBox x:Name="FirstNameBox" Margin="25,749,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
-                <TextBox x:Name="AgeText" Margin="25,474,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
-                <TextBlock Text="Фамилия" Margin="25,626,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" HorizontalAlignment="Left" Width="186" Height="31" VerticalAlignment="Top"/>
-                <TextBlock Margin="25,715,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" Text="Имя" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
-                <TextBlock Margin="25,441,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"><Run Language="ru-ru" Text="Возраст"/></TextBlock>
+                <TextBox IsEnabled="True" x:Name="LoginBox" Margin="215,107,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" TextChanged="LoginBox_TextChanged"/>
+                <TextBox x:Name="PasswordBox" Margin="215,196,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20"/>
+                <TextBlock Text="Логин:" Margin="10,110,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
+                <TextBlock Margin="10,199,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" Text="Пароль:" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
+                <TextBlock Margin="-12,287,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" Text="Повторите пароль:" HorizontalAlignment="Left" Width="208" Height="30" VerticalAlignment="Top"/>
+                <TextBox x:Name="RepeatPassBox" Margin="215,287,0,0" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="37" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" HorizontalAlignment="Left" MaxLength="20" TextAlignment="Center"/>
+                <TextBox x:Name="LastNameBox" Margin="215,657,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
+                <TextBox x:Name="FirstNameBox" Margin="215,745,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
+                <TextBox x:Name="AgeText" Margin="215,470,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="38" VerticalAlignment="Top" BorderBrush="Black" Background="{x:Null}" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
+                <TextBlock Text="Фамилия:" Margin="10,660,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" HorizontalAlignment="Left" Width="186" Height="31" VerticalAlignment="Top"/>
+                <TextBlock Margin="10,749,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" Text="Имя:" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"/>
+                <TextBlock Margin="10,475,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"><Run Language="ru-ru" Text="Возраст:"/></TextBlock>
                 <TextBlock x:Name="Error" Visibility="Hidden" HorizontalAlignment="Left" Margin="215,108,0,0" TextWrapping="Wrap" Text="ꜝ" VerticalAlignment="Top" FontSize="50" Width="30" Height="40">
                     <TextBlock.ToolTip>
                         <ToolTip>
@@ -35,11 +30,11 @@
                         </ToolTip>
                     </TextBlock.ToolTip>
                 </TextBlock>
-                <TextBox x:Name="ProfessionBox" Margin="25,570,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
-                <TextBlock Margin="25,535,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"><Run Language="ru-ru" Text="Профессия"/></TextBlock>
-                <TextBox x:Name="EducationBox" Margin="25,395,0,0" Text="" FontSize="30" FontFamily="Calibri" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
-                <TextBlock Margin="25,357,0,0" FontSize="24" TextAlignment="Center" FontFamily="Calibri" HorizontalAlignment="Left" Width="185" Height="33" VerticalAlignment="Top"><Run Language="ru-ru" Text="Образование"/></TextBlock>
-                <Button x:Name="regButton_Copy" Margin="218,29,0,0" Content="🔙" FontSize="20" Foreground="Black" Background="#FFC9CFD6" Width="43" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Click="regButton_Click">
+                <TextBox x:Name="ProfessionBox" Margin="215,566,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
+                <TextBlock Margin="10,569,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" HorizontalAlignment="Left" Width="186" Height="30" VerticalAlignment="Top"><Run Language="ru-ru" Text="Профессия:"/></TextBlock>
+                <TextBox x:Name="EducationBox" Margin="215,391,0,0" Text="" FontSize="30" FontFamily="Sylfaen" MinWidth="185" Width="auto" MaxWidth="300" Height="36" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="Black" TextAlignment="Center" HorizontalAlignment="Left" UndoLimit="1" MaxLength="20" PreviewTextInput="PreviewTextInput"/>
+                <TextBlock Margin="10,391,0,0" FontSize="24" TextAlignment="Right" FontFamily="Sylfaen" HorizontalAlignment="Left" Width="185" Height="33" VerticalAlignment="Top"><Run Language="ru-ru" Text="Образование:"/></TextBlock>
+                <Button x:Name="back" Margin="362,34,0,0" Content="🔙" FontSize="20" Foreground="Black" Background="#FFC9CFD6" Width="43" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Click="back_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="7"/>

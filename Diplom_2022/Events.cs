@@ -20,8 +20,8 @@ namespace Diplom_2022
         public Nullable<int> SoldTicketsCount { get; set; }
         public Nullable<int> GainTicketsCount { get; set; }
         public Nullable<int> Cost { get; set; }
-        public System.DateTime Date { get; set; }
-        public Nullable<System.TimeSpan> Time { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
         public Nullable<int> Age { get; set; }
         public string Eduacation { get; set; }
         public string Profession { get; set; }
