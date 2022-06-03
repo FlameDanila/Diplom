@@ -78,6 +78,7 @@
     <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
         <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Couch" ColumnName="Couch" />
           <ScalarProperty Name="VenueId" ColumnName="VenueId" />
           <ScalarProperty Name="Profession" ColumnName="Profession" />
           <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />

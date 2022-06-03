@@ -16,6 +16,7 @@
     <Property Name="Eduacation" Type="nvarchar" MaxLength="50" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" />
     <Property Name="VenueId" Type="int" />
+    <Property Name="Couch" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="EventType">
     <Key>

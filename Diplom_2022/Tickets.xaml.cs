@@ -48,6 +48,7 @@ namespace Diplom_2022
             List<string> ticket = new List<string>();
             List<string> venue = new List<string>();
             List<string> id = new List<string>();
+            List<string> couch = new List<string>();
 
             for (int f = 0; f < data.Rows.Count; f++)
             {
@@ -69,6 +70,8 @@ namespace Diplom_2022
                 venue.Add(venues[f].ToString());
                 var ids = App.db.Events.Select(n => n.Id).ToList();
                 id.Add(ids[f].ToString());
+                var couchers = App.db.Events.Select(n => n.Couch).ToList();
+                couch.Add(couchers[f].ToString());
             }
 
             int top = 20;
@@ -81,14 +84,15 @@ namespace Diplom_2022
                 grid.Height = 50;
                 grid.PreviewMouseLeftButtonDown += buy;
                 grid.Name = "s" + id[g];
+                grid.PreviewMouseRightButtonDown += Dell_Click;
 
                 TextBlock nameText = new TextBlock();
                 nameText.Height = 80;
-                nameText.Width = 260;
+                nameText.Width = 200;
                 nameText.Text = name[g];
                 nameText.HorizontalAlignment = HorizontalAlignment.Left;
                 nameText.VerticalAlignment = VerticalAlignment.Top;
-                nameText.FontSize = 23;
+                nameText.FontSize = 20;
                 nameText.Margin = new Thickness(top, bottom, 0, 0);
                 nameText.ToolTip = name[g];
 
@@ -98,7 +102,7 @@ namespace Diplom_2022
                 ageText.Text = age[g];
                 ageText.HorizontalAlignment = HorizontalAlignment.Left;
                 ageText.VerticalAlignment = VerticalAlignment.Top;
-                ageText.FontSize = 23;
+                ageText.FontSize = 20;
                 ageText.Margin = new Thickness(top, bottom, 0, 0);
 
                 TextBlock costText = new TextBlock();
@@ -107,16 +111,16 @@ namespace Diplom_2022
                 costText.Text = cost[g];
                 costText.HorizontalAlignment = HorizontalAlignment.Left;
                 costText.VerticalAlignment = VerticalAlignment.Top;
-                costText.FontSize = 23;
+                costText.FontSize = 20;
                 costText.Margin = new Thickness(top, bottom, 0, 0);
 
                 TextBlock timeText = new TextBlock();
                 timeText.Height = 50;
-                timeText.Width = 56;
+                timeText.Width = 48;
                 timeText.Text = time[g];
                 timeText.HorizontalAlignment = HorizontalAlignment.Left;
                 timeText.VerticalAlignment = VerticalAlignment.Top;
-                timeText.FontSize = 23;
+                timeText.FontSize = 20;
                 timeText.Margin = new Thickness(top, bottom, 0, 0);
 
                 TextBlock dateText = new TextBlock();
@@ -125,7 +129,7 @@ namespace Diplom_2022
                 dateText.Text = date[g];
                 dateText.HorizontalAlignment = HorizontalAlignment.Left;
                 dateText.VerticalAlignment = VerticalAlignment.Top;
-                dateText.FontSize = 23;
+                dateText.FontSize = 20;
                 dateText.Margin = new Thickness(top, bottom, 0, 0);
 
                 DataTable selectNameFromId = Select($"select Name from dbo.eventType where Id = {type[g]}");
@@ -137,30 +141,40 @@ namespace Diplom_2022
                 typeText.Text = nameFromId;
                 typeText.HorizontalAlignment = HorizontalAlignment.Left;
                 typeText.VerticalAlignment = VerticalAlignment.Top;
-                typeText.FontSize = 23;
+                typeText.FontSize = 20;
                 typeText.Margin = new Thickness(top, bottom, 0, 0);
                 typeText.ToolTip = nameFromId;
 
                 TextBlock ticketsGainText = new TextBlock();
                 ticketsGainText.Height = 50;
-                ticketsGainText.Width = 60;
+                ticketsGainText.Width = 40;
                 ticketsGainText.Text = ticket[g];
                 ticketsGainText.HorizontalAlignment = HorizontalAlignment.Left;
                 ticketsGainText.VerticalAlignment = VerticalAlignment.Top;
-                ticketsGainText.FontSize = 23;
+                ticketsGainText.FontSize = 20;
                 ticketsGainText.Margin = new Thickness(top, bottom, 0, 0);
                 ticketsGainText.ToolTip = ticket[g];
+
+                TextBlock couchText = new TextBlock();
+                couchText.Height = 50;
+                couchText.Width = 100;
+                couchText.Text = couch[g];
+                couchText.HorizontalAlignment = HorizontalAlignment.Left;
+                couchText.VerticalAlignment = VerticalAlignment.Top;
+                couchText.FontSize = 20;
+                couchText.Margin = new Thickness(top, bottom, 0, 0);
+                couchText.ToolTip = couch[g];
 
                 DataTable venueNameFromId = Select($"select Name from dbo.venue where VenueTypeId = {venue[g]}");
                 string venueName = venueNameFromId.Rows[0][0].ToString();
 
                 TextBlock venueText = new TextBlock();
                 venueText.Height = 50;
-                venueText.Width = 180;
+                venueText.Width = 150;
                 venueText.Text = venueName;
                 venueText.HorizontalAlignment = HorizontalAlignment.Left;
                 venueText.VerticalAlignment = VerticalAlignment.Top;
-                venueText.FontSize = 23;
+                venueText.FontSize = 20;
                 venueText.Margin = new Thickness(top, bottom, 0, 0);
                 venueText.ToolTip = venueName;
 
@@ -172,6 +186,7 @@ namespace Diplom_2022
                 grid.Children.Add(typeText);
                 grid.Children.Add(ticketsGainText);
                 grid.Children.Add(venueText);
+                grid.Children.Add(couchText);
 
                 list.Children.Add(grid);
             }
@@ -235,6 +250,19 @@ namespace Diplom_2022
         {
             counter = 0;
             Update();
+        }
+        private void Dell_Click(object sender, RoutedEventArgs e)
+        {
+            var f = sender as StackPanel;
+            if (App.userId == "1")
+            {
+                if (MessageBox.Show("Вы точно хотите удалить это мероприятие?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No) { }
+                else
+                {
+                    DataTable dataTable = Select($"delete from Events where id = '{f.Name.Replace("s", "")}'");
+                }
+                Update();
+            }
         }
     }
 }

@@ -63,7 +63,8 @@ namespace Diplom_2022
                     Profession = proffessionText.Text,
                     Eduacation = "-",
                     TypeId = Convert.ToInt32(datatable.Rows[0][0]),
-                    VenueId = Convert.ToInt32(data.Rows[0][0])
+                    VenueId = Convert.ToInt32(data.Rows[0][0]),
+                    Couch = couch_Text.Text
                 };
                 App.db.Events.Add(events);
 

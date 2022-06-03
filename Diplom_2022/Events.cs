@@ -26,6 +26,7 @@ namespace Diplom_2022
         public string Eduacation { get; set; }
         public string Profession { get; set; }
         public Nullable<int> VenueId { get; set; }
+        public string Couch { get; set; }
     
         public virtual EventType EventType { get; set; }
         public virtual Venue Venue { get; set; }

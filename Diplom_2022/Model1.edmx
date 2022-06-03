@@ -21,6 +21,7 @@
           <Property Name="Eduacation" Type="nvarchar" MaxLength="50" />
           <Property Name="Profession" Type="nvarchar" MaxLength="50" />
           <Property Name="VenueId" Type="int" />
+          <Property Name="Couch" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="EventType">
           <Key>
@@ -298,6 +299,7 @@
           <Property Name="VenueId" Type="Int32" />
           <NavigationProperty Name="EventType" Relationship="SistemaUchetaModel.FK_Events_EventType" FromRole="Events" ToRole="EventType" />
           <NavigationProperty Name="Venue" Relationship="SistemaUchetaModel.FK_Events_Venue" FromRole="Events" ToRole="Venue" />
+          <Property Name="Couch" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Events_EventType">
           <End Type="SistemaUchetaModel.EventType" Role="EventType" Multiplicity="0..1" />
@@ -406,6 +408,7 @@
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="SistemaUchetaModel.Events">
               <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="Couch" ColumnName="Couch" />
                 <ScalarProperty Name="VenueId" ColumnName="VenueId" />
                 <ScalarProperty Name="Profession" ColumnName="Profession" />
                 <ScalarProperty Name="Eduacation" ColumnName="Eduacation" />

@@ -45,7 +45,7 @@ namespace Diplom_2022
                 {
                     if (PasswordBox.Text == PasswordList[i] || MyPasswordBox.Password == PasswordList[i])
                     {
-                        App.userId = UserList[i].Login;
+                        App.userId = LoginBox.Text.ToString();
                         Menu menu = new Menu();
                         menu.Show();
                         Close();

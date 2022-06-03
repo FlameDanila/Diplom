@@ -15,15 +15,16 @@
         <Button x:Name="dateButton" Margin="630,108,0,0" Content="Составить программу" FontSize="20" Background="#FFC9CFD6" Foreground="Black" MinHeight="40" MinWidth="169" Width="199" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Click="authButton_Click" IsDefault="True" BorderBrush="#FFA3ABC7" FontFamily="Sylfaen">
         </Button>
         <Image HorizontalAlignment="Left" Height="97" Margin="1064,80,0,0" VerticalAlignment="Top" Width="95" Source="/icon.png" Stretch="Fill" StretchDirection="Both" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <TextBlock HorizontalAlignment="Left" Margin="113,177,0,0" TextWrapping="Wrap" Text="Название" FontSize="30" VerticalAlignment="Top" FontFamily="Sylfaen"/>
-        <TextBlock HorizontalAlignment="Left" Margin="465,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="⌚"/>
-        <TextBlock HorizontalAlignment="Left" Margin="390,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="🧍"/>
-        <TextBlock HorizontalAlignment="Left" Margin="532,177,0,0" TextWrapping="Wrap" Text="💵" FontSize="30" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="649,177,0,0" TextWrapping="Wrap" Text="📅" FontSize="30" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="768,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="Тип" FontFamily="Sylfaen"/>
-        <TextBlock HorizontalAlignment="Left" Margin="893,177,0,0" TextWrapping="Wrap" Text="🎟" FontSize="30" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="979,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="Место" FontFamily="Sylfaen"/>
+        <TextBlock HorizontalAlignment="Left" Margin="108,177,0,0" TextWrapping="Wrap" Text="Название" FontSize="30" VerticalAlignment="Top" FontFamily="Sylfaen"/>
+        <TextBlock HorizontalAlignment="Left" Margin="399,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="⌚"/>
+        <TextBlock HorizontalAlignment="Left" Margin="329,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="🧍"/>
+        <TextBlock HorizontalAlignment="Left" Margin="459,177,0,0" TextWrapping="Wrap" Text="💵" FontSize="30" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="565,177,0,0" TextWrapping="Wrap" Text="📅" FontSize="30" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="703,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="Тип" FontFamily="Sylfaen"/>
+        <TextBlock HorizontalAlignment="Left" Margin="819,177,0,0" TextWrapping="Wrap" Text="🎟" FontSize="30" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="913,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="Место" FontFamily="Sylfaen"/>
         <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="483,116,0,0" VerticalAlignment="Top" FontFamily="Sylfaen"/>
         <Button x:Name="UpdateButton" Margin="127,118,0,0" Content="🗘" FontSize="20" Background="#FFC9CFD6" Foreground="Black" Width="33" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Click="UpdateButton_Click" IsDefault="True" BorderBrush="#FFA3ABC7" FontFamily="Sylfaen"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1064,177,0,0" TextWrapping="Wrap" FontSize="30" VerticalAlignment="Top" Text="👨"/>
     </Grid>
 </Window>
