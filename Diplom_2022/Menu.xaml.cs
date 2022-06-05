@@ -37,7 +37,7 @@ namespace Diplom_2022
 
         private void hallsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (App.userId == "1")
+            if (App.userlogin == "Admin")
             {
                 AddEvent addEvent = new AddEvent();
                 addEvent.Show();

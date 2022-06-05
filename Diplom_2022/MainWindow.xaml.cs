@@ -38,6 +38,7 @@ namespace Diplom_2022
 
             var PasswordList = UserList.Select(n => n.Password).ToList();
             var LoginList = UserList.Select(n => n.Login).ToList();
+            var IdList = UserList.Select(n => n.Id).ToList();
 
             for (int i = 0; i < UserList.Count; i++)
             {
@@ -45,7 +46,7 @@ namespace Diplom_2022
                 {
                     if (PasswordBox.Text == PasswordList[i] || MyPasswordBox.Password == PasswordList[i])
                     {
-                        App.userId = LoginBox.Text.ToString();
+                        App.userId = IdList[i].ToString();
                         Menu menu = new Menu();
                         menu.Show();
                         Close();

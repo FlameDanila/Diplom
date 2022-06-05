@@ -81,12 +81,12 @@ namespace Diplom_2022
         }
         public new void PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^а-яА-Я]+[W]+");
+            Regex regex = new Regex("[^а-яА-Я]+");
             e.Handled = regex.IsMatch(e.Text);
         }
         public void DigitsTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+[W]+");
+            Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 

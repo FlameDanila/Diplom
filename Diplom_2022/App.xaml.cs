@@ -15,5 +15,6 @@ namespace Diplom_2022
     {
         public static SistemaUchetaEntities1 db = new SistemaUchetaEntities1();
         public static string userId = "0";
+        public static string userlogin = "0";
     }
 }

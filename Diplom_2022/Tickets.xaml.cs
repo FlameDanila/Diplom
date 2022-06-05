@@ -20,6 +20,8 @@ namespace Diplom_2022
     public partial class Tickets : Window
     {
         public int counter = 0;
+        public string sort = "";
+        public int arrow = 0;
         public Tickets()
         {
             InitializeComponent();
@@ -33,11 +35,40 @@ namespace Diplom_2022
 
             if (counter == 0)
             {
-                data = Select("Select * from events");
+                if (sort != "")
+                {
+                    if (arrow == 0)
+                    {
+                        data = Select($"Select * from events order by {sort}");
+                    }
+                    else
+                    {
+                        data = Select($"Select * from events order by {sort} DESC");
+                    }
+                }
+                else
+                {
+                    data = Select("Select * from events");
+                }
             }
-            else 
+            else
             {
-                data = Select($"Select * from events where date = '{datePicker.Text}'");
+                if (sort != "")
+                {
+
+                    if (arrow == 0)
+                    {
+                        data = Select($"Select * from events where date = '{datePicker.Text}' order by {sort}");
+                    }
+                    else
+                    {
+                        data = Select($"Select * from events where date = '{datePicker.Text}' order by {sort} DESC");
+                    }
+                }
+                else
+                {
+                    data = Select($"Select * from events where date = '{datePicker.Text}'");
+                }
             }
             List<string> name = new List<string>();
             List<string> age = new List<string>();
@@ -52,26 +83,16 @@ namespace Diplom_2022
 
             for (int f = 0; f < data.Rows.Count; f++)
             {
-                var names = App.db.Events.Select(n => n.Name).ToList();
-                name.Add(names[f]);
-                var ages = App.db.Events.Select(n => n.Age).ToList();
-                age.Add(ages[f].ToString());
-                var costs = App.db.Events.Select(n => n.Cost).ToList();
-                cost.Add(costs[f].ToString());
-                var dates = App.db.Events.Select(n => n.Date).ToList();
-                date.Add(dates[f].ToString());
-                var times = App.db.Events.Select(n => n.Time).ToList();
-                time.Add(times[f].ToString());
-                var types = App.db.Events.Select(n => n.TypeId).ToList();
-                type.Add(types[f].ToString());
-                var ticketsGain = App.db.Events.Select(n => n.GainTicketsCount).ToList();
-                ticket.Add(ticketsGain[f].ToString());
-                var venues = App.db.Events.Select(n => n.VenueId).ToList();
-                venue.Add(venues[f].ToString());
-                var ids = App.db.Events.Select(n => n.Id).ToList();
-                id.Add(ids[f].ToString());
-                var couchers = App.db.Events.Select(n => n.Couch).ToList();
-                couch.Add(couchers[f].ToString());
+                name.Add(data.Rows[f][1].ToString());
+                age.Add(data.Rows[f][8].ToString());
+                cost.Add(data.Rows[f][5].ToString());
+                date.Add(data.Rows[f][6].ToString());
+                time.Add(data.Rows[f][7].ToString());
+                type.Add(data.Rows[f][2].ToString());
+                ticket.Add(data.Rows[f][4].ToString());
+                venue.Add(data.Rows[f][11].ToString());
+                id.Add(data.Rows[f][0].ToString());
+                couch.Add(data.Rows[f][12].ToString());
             }
 
             int top = 20;
@@ -197,7 +218,7 @@ namespace Diplom_2022
         {
             var f = sender as StackPanel;
             DataTable dt = Select($"select name from events where id = '{f.Name.Replace("s","")}'");
-            if (MessageBox.Show($"Вы действительно хотите забронировать билет на {dt.Rows[0][0]}?", "Уверены?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No) { }
+            if (MessageBox.Show($"Вы действительно хотите забронировать место на {dt.Rows[0][0]}?", "Уверены?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No) { }
             else
             {
                 DataTable data = Select($"select gainticketscount from events where id = '{f.Name.Replace("s", "")}'");
@@ -242,7 +263,7 @@ namespace Diplom_2022
 
         private void authButton_Click(object sender, RoutedEventArgs e)
         {
-            counter++;
+            counter = 1;
             Update();
         }
 
@@ -263,6 +284,33 @@ namespace Diplom_2022
                 }
                 Update();
             }
+        }
+        private void Name_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Name.Text = "Название";
+            Age.Text = "🧍";
+            Time.Text = "⌚";
+            Date.Text = "📅";
+            TypeId.Text = "Тип";
+            Cost.Text = "💵";
+            VenueId.Text = "Место";
+            GainTicketsCount.Text = "🎟";
+            Couch.Text = "👨";
+
+            var name = sender as TextBlock;
+            sort = name.Name;
+
+            if (arrow == 0)
+            {
+                name.Text += "⌄";
+                arrow = 1;
+            }
+            else
+            {
+                name.Text += "⌃";
+                arrow = 0;
+            }
+            Update();
         }
     }
 }
